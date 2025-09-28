@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class HealthState : MonoBehaviour
 {
     public delegate void OnDamageHandler(int damage, Transform other);
+    public delegate void OnDeathHandler(Transform other);
     public event OnDamageHandler OnDamage;
+    public event OnDeathHandler OnDeath;
 
     public int baseHealth;
     private int currentHealth;
@@ -12,7 +15,7 @@ public class HealthState : MonoBehaviour
     private Animator animator;
     private bool isHurting = false;
     public bool IsHurting() => isHurting;
-    public bool IsDead() => currentHealth == 0;
+    public bool IsDead() => currentHealth <= 0;
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -27,12 +30,13 @@ public class HealthState : MonoBehaviour
     }
     public void EndDeath()
     {
-        Destroy(this.gameObject);
+        OnDeath?.Invoke(transform);
+        gameObject.SetActive(false);
     }
     public void Damage(int x, Transform other)
     {
         if (isHurting) return;
-        currentHealth -= 1;
+        currentHealth = Math.Max(0, currentHealth-x);
         OnDamage?.Invoke(x, other);
         if (IsDead())
         {
