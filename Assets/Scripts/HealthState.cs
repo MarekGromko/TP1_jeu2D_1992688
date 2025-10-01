@@ -6,8 +6,10 @@ public class HealthState : MonoBehaviour
 {
     public delegate void OnDamageHandler(int damage, Transform other);
     public delegate void OnDeathHandler(Transform other);
+    public delegate void OnChangeHandler(int change);
     public event OnDamageHandler OnDamage;
     public event OnDeathHandler OnDeath;
+    public event OnChangeHandler OnChange;
 
     public int baseHealth;
     private int currentHealth;
@@ -35,9 +37,10 @@ public class HealthState : MonoBehaviour
     }
     public void Damage(int x, Transform other)
     {
-        if (isHurting) return;
-        currentHealth = Math.Max(0, currentHealth-x);
+        if (IsHurting() || IsDead()) return;
+        currentHealth = Math.Max(0, currentHealth - x);
         OnDamage?.Invoke(x, other);
+        OnChange?.Invoke(-x);
         if (IsDead())
         {
             animator.SetTrigger("Dead");
@@ -45,6 +48,15 @@ public class HealthState : MonoBehaviour
         else
         {
             animator.SetTrigger("Hurt");
+        }
+    }
+    public void Regen(int x)
+    {
+        currentHealth = Math.Min(baseHealth, currentHealth + x);
+        OnChange?.Invoke(x);
+        if (!IsHurting())
+        {
+            animator.SetTrigger("Regen");
         }
     }
 }

@@ -15,9 +15,9 @@ public class HealthBar : MonoBehaviour
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        hp.OnDamage += OnDamage;
+        hp.OnChange += OnHealthChange;
     }
-    void OnDamage(int d, Transform _)
+    void OnHealthChange(int d)
     {
         var scl = (float)hp.CurrentHealth() / (float)hp.baseHealth;
         transform.localScale = new Vector3(scl, transform.localScale.y, transform.localScale.z);

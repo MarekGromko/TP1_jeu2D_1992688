@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 6395736548626446744}
   - component: {fileID: 9071217223339006804}
   - component: {fileID: 2038432253909769533}
+  - component: {fileID: 4295164091101581788}
+  - component: {fileID: 8804696840813931744}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Enemy
@@ -218,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b760b8083129f4e079cb3d24e8fe02c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthState
-  baseHealth: 12
+  baseHealth: 10
 --- !u!114 &6395736548626446744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,9 +262,133 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555e0eb33c00e4f79b7eba643b00ef1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioController
-  death: {fileID: 0}
-  damage: {fileID: 0}
-  swoosh: {fileID: 0}
+  death:
+    clip: {fileID: 8300000, guid: 19604de894a6f4d0fb6c920231e7b898, type: 3}
+    volume: 1
+  damage:
+    clip: {fileID: 8300000, guid: 19604de894a6f4d0fb6c920231e7b898, type: 3}
+    volume: 0.5
+  swoosh:
+    clip: {fileID: 0}
+    volume: 1
+--- !u!114 &4295164091101581788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179640059086695416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a388360757b243aea80259cec03d786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnDeathSpawn
+  nbItemSpawned: 1
+  chancesDenominator: 100
+  spawnables:
+  - prefab: {fileID: 6339779991477301162, guid: 5190c02a8b2fd4f6282518f5ef1a296b, type: 3}
+    chances: 1
+    isDependant: 0
+  - prefab: {fileID: 6339779991477301162, guid: 5190c02a8b2fd4f6282518f5ef1a296b, type: 3}
+    chances: 0.5
+    isDependant: 0
+--- !u!82 &8804696840813931744
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179640059086695416}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 50
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4706802358905193640
 GameObject:
   m_ObjectHideFlags: 0

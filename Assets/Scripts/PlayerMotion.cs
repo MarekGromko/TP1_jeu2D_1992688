@@ -5,24 +5,34 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerAttack))]
 [RequireComponent(typeof(HealthState))]
+[RequireComponent(typeof(VictoryCondition))]
 public class PlayerMotion : MonoBehaviour
 {
     public float speed = 5;
     private Animator animator;
     private HealthState hp;
     private Rigidbody2D rb;
+    private VictoryCondition vc;
     private Vector2 reqMotion;
     private PlayerAttack atkState;
     void Awake()
     {
         hp = GetComponent<HealthState>();
         rb = GetComponent<Rigidbody2D>();
+        vc = GetComponent<VictoryCondition>();
         animator = GetComponent<Animator>();
         atkState = GetComponent<PlayerAttack>();
     }
+    private bool CanMove()
+    {
+        return (
+            !hp.IsDead() &&
+            !vc.IsVictory()
+        );
+    }
     public void OnMove(InputValue input)
     {
-        if (hp.IsDead()) return;
+        if (!CanMove()) return;
         if (reqMotion.sqrMagnitude > 0f)
         {
             animator.SetFloat("LastMoveX", reqMotion.x);
@@ -36,15 +46,16 @@ public class PlayerMotion : MonoBehaviour
     }
     public void OnAttack(InputValue input)
     {
-        if (hp.IsDead()) return;
+        if (!CanMove()) return;
         atkState.StartAttack();
     }
     void FixedUpdate()
     {
-        if (hp.IsDead()) return;
+        if (!CanMove()) return;
         if (reqMotion.sqrMagnitude > 0f && !atkState.IsAttacking())
         {
             rb.MovePosition(rb.position + speed * Time.deltaTime * reqMotion.normalized);
         }
+        vc.Check();
     }
 }
