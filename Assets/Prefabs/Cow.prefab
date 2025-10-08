@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8618754045188763027}
   - component: {fileID: 3653886806401743413}
-  - component: {fileID: 5838117402200294430}
+  - component: {fileID: 3577775643364587579}
   - component: {fileID: 6933148131050650908}
   - component: {fileID: 2221482846491865361}
   - component: {fileID: 6395736548626446744}
@@ -140,8 +140,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5838117402200294430
-BoxCollider2D:
+--- !u!58 &3577775643364587579
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,18 +174,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.015439093, y: 0.09263438}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.77150214, y: 0.50595057}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.017166555, y: 0.085253716}
+  m_Radius: 0.3417887
 --- !u!95 &6933148131050650908
 Animator:
   serializedVersion: 7
@@ -313,7 +303,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 50
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.9853144
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

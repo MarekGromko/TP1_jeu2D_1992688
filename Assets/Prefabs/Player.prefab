@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   targetTag: Enemy
-  damage: 1
+  damage: 3
   atk_north: {fileID: 7323741228457741433}
   atk_east: {fileID: 913440998950842488}
   atk_south: {fileID: 6829280897594765220}
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6d560c66712401fb58146c78c3aece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictoryCondition
-  scenePath: 
+  scenePath: lvl_2
 --- !u!1 &1491566202363096417
 GameObject:
   m_ObjectHideFlags: 0
