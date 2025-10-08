@@ -1,6 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(VictoryCondition))]
 public class PlayerAttack : AttackBase
 {
     public Collider2D atk_north;

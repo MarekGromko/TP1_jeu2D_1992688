@@ -7,7 +7,7 @@ public class VictoryCondition : MonoBehaviour
 {
     public string scenePath = null;
     public delegate void OnVictoryHandler();
-    public event OnVictoryHandler OnVictoru;
+    public event OnVictoryHandler OnVictory;
     private Animator animator;
     private bool isVictory = false;
     public bool IsVictory() => isVictory;
